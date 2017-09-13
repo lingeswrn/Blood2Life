@@ -1,0 +1,57 @@
+/*!
+ * Start Bootstrap - The Big Picture (http://startbootstrap.com/template-overviews/the-big-picture)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-the-big-picture/blob/master/LICENSE)
+ */
+
+body {
+	font-family: 'Open Sans', sans-serif;
+    background: url('../images/body_bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+:focus {
+    outline: -webkit-focus-ring-color auto 0px !important;
+}
+h1.reg_head {
+    color: #fff;
+    font-weight: 200;
+}
+.reg-form input, .reg-form input:focus,.reg-form select, .reg-form select:focus {
+    background: #181818;
+    padding: 8px 10px;
+    font-size: 13px;
+    width: 100% !important;
+	margin-bottom:30px !important;
+	height: 34px !important;
+}
+input:focus, textarea:focus, select:focus {
+    outline-offset: 0px;
+}
+.checkbox input, .checkbox input:focus {
+    width: auto !important;
+    text-align: left;
+	margin-bottom:0px !important;
+	height:auto !important;
+}
+.checkbox label {
+    color: #495057;
+    text-align: left !important;
+    display: block;
+    font-size: 13px;
+}
+.form-control:focus {
+    border-color: #181818;
+}
+.check_align{
+	margin-top: -20px;
+    margin-bottom: 15px;
+}
+.reg_btn {
+    background: #A61C20;
+    color: #ccc;
+    border: 0;
+    padding: 5px 40px;
+}
