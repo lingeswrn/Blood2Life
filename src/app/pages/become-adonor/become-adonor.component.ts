@@ -11,25 +11,72 @@ import { ConstantsService } from '../../_service/constants/constants.service';
   providers: [HttpRequestService, ConstantsService, HttpClient]
 })
 export class BecomeAdonorComponent implements OnInit {
-  public test: any[];
+  public countries: any[];
+  public states;
+  public cities;
+  public bloodGroups;
+  public registrationData = {};
+  public state = 0;
   constructor(
     private request: HttpRequestService,
     private constants: ConstantsService
-  ) { }
+  ) {
+    this.state = 0;
+  }
 
   ngOnInit() {
     this.getCountries();
+    this.getBloodGroups();
   }
 
-  getCountries(){
-    var reqData = {};
+  getCountries() {
+    const reqData = {};
     this.request.securePost(this.constants.API_COUNTRY, reqData)
-      .subscribe(this.testRes);
-    
+      .subscribe(this.countryRes);
   }
 
-  testRes = (res) => {
-    this.test = res;
-    console.log(this.test);
+  getStatesByCountryId(id) {
+    const reqData = { 'countryId': id};
+    this.request.securePost(this.constants.API_STATE, reqData)
+      .subscribe(this.stateRes);
+  }
+
+  getCitiesByStateId(id) {
+    const reqData = { 'stateId': id};
+    this.request.securePost(this.constants.API_CITY, reqData)
+      .subscribe(this.cityRes);
+  }
+
+  getBloodGroups() {
+    this.request.secureGet(this.constants.API_BLOOD_GROUP)
+      .subscribe(this.blodRes);
+  }
+
+  countryRes = (res) => {
+    if (res.code === this.constants.API_SUCCESS) {
+      let tempCountry = [];
+      tempCountry.push(res.data);
+      this.countries = tempCountry;
+      console.log(this.countries);
+      this.getStatesByCountryId(res.data.CountryID);
+    }
+  }
+
+  stateRes = (res) => {
+    if (res.code === this.constants.API_SUCCESS) {
+      this.states = res.data;
+    }
+  }
+
+  cityRes = (res) => {
+    if (res.code === this.constants.API_SUCCESS) {
+      this.cities = res.data;
+    }
+  }
+
+  blodRes = (res) => {
+    if (res.code === this.constants.API_SUCCESS) {
+      this.bloodGroups = res.data;
+    }
   }
 }

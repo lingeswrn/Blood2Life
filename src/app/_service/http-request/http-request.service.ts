@@ -12,16 +12,15 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HttpRequestService{
-  
   constructor(
     private http: Http
-  ) {
-  }  
+  ) {}
 
   securePost(url, req) {
     return this.http.post(url, req).map((res:Response) => res.json());
+  }
 
-    // return this.http.get('https://conduit.productionready.io/api/profiles/eric')
-    // .map((res:Response) => res.json());
+  secureGet(url) {
+    return this.http.get(url).map((res:Response) => res.json());
   }
 }

@@ -39,17 +39,18 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="Bloog Group">
-							<option>A+</option>
-							<option>O+</option>
+						  <select class="form-control">
+							<option *ngFor="let b of bloodGroups" [value]="b.BloodGroupID">{{b.BloodGroup}}</option>
 						  </select>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="Donation Frequency">
-							<option>A+</option>
-							<option>O+</option>
+						  <select class="form-control">
+								<option>Donation Frequency</option>
+								<option value="lessthan3m">Less than 3 Months</option>
+								<option value="morethan3m">More than 3 Months</option>
+								<option value="never">Never</option>
 						  </select>
 						</div>
 					</div>
@@ -64,31 +65,30 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="Current City">
-							<option>Bangalore</option>
+						  <input type="text" class="form-control" placeholder="Current City" />
+							
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+						  <select class="form-control">
+								<!-- <option value="0">Select city or district</option> -->
+								<option *ngFor="let c of cities" [value]="c.CityID">{{c.Name}}</option>
 						  </select>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="District">
-							<option>Bangalore</option>
+						  <select class="form-control" [(ngModel)]="registrationData.state" (change) = "getCitiesByStateId($event.target.value)">
+								<option value="0">Select State</option>
+								<option *ngFor="let s of states" [value]="s.StateID">{{s.Name}}</option>
 						  </select>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="State">
-							<option>KA</option>
-							<option>AP</option>
-						  </select>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="Country">
-							<option>India</option>
-							<option>USA</option>
+						  <select class="form-control" [(ngModel)]="registrationData.country">
+								<option *ngFor="let a of countries" [value]="a.CountryID" [selected]="a.CountryID == '101'">{{a.Name}}</option>
 						  </select>
 						</div>
 					</div>
