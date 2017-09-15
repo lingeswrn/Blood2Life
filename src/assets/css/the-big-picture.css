@@ -43,7 +43,7 @@ input:focus, textarea:focus, select:focus {
     font-size: 13px;
 }
 .form-control:focus {
-    border-color: #181818;
+    border-color: #FFFFFF;
 }
 .check_align{
 	margin-top: -20px;
@@ -54,4 +54,7 @@ input:focus, textarea:focus, select:focus {
     color: #ccc;
     border: 0;
     padding: 5px 40px;
+}
+.error{
+    border: 1px solid red;
 }

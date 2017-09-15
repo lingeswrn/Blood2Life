@@ -5,12 +5,25 @@
         <div class="row">
           <div class="col-lg-6">
             <h1 class="reg_head">Register</h1>
-				<form class="form-inline reg-form">
-					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="First Name">
+				<form class="form-inline reg-form" [formGroup]="registrationForm" #regDir="ngForm">
+					
+					<div class="col-sm-6" >
+						<input class="form-group form-control" [ngClass]="{'error': firstName.invalid && (firstName.dirty || firstName.touched)}" id="firstName" placeholder="First Name" formControlName="firstName" required>
+						<!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"	class="alert alert-danger">
+
+							<div *ngIf="firstName.errors.required">
+								Name is required.
+							</div>
+						</div> -->
 					</div>
 					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="Last Name">
+						<input class="form-group form-control" [ngClass]="{'error': lastName.invalid && (lastName.dirty || lastName.touched)}" placeholder="Last Name" formControlName="lastName" required>
+						<!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"	class="alert alert-danger">
+
+							<div *ngIf="firstName.errors.required">
+								Name is required.
+							</div>
+						</div> -->
 					</div>	
 					<div class="col-sm-6">
 						<input class="form-group form-control" type="text" placeholder="Phone Number">
@@ -79,7 +92,7 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" [(ngModel)]="registrationData.state" (change) = "getCitiesByStateId($event.target.value)">
+						  <select class="form-control" (change) = "getCitiesByStateId($event.target.value)">
 								<option value="0">Select State</option>
 								<option *ngFor="let s of states" [value]="s.StateID">{{s.Name}}</option>
 						  </select>
@@ -87,7 +100,7 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" [(ngModel)]="registrationData.country">
+						  <select class="form-control">
 								<option *ngFor="let a of countries" [value]="a.CountryID" [selected]="a.CountryID == '101'">{{a.Name}}</option>
 						  </select>
 						</div>

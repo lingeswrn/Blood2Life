@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpRequestService } from '../../_service/http-request/http-request.service';
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
@@ -15,15 +16,23 @@ export class BecomeAdonorComponent implements OnInit {
   public states;
   public cities;
   public bloodGroups;
-  public registrationData = {};
-  public state = 0;
+  public registrationData = {firstName: '', lastName: ''};
+  registrationForm: FormGroup;
+
   constructor(
     private request: HttpRequestService,
-    private constants: ConstantsService
+    private constants: ConstantsService,
+    fb: FormBuilder
   ) {
-    this.state = 0;
+    this.registrationForm = new FormGroup({
+        'firstName': new FormControl(this.registrationData.firstName, [Validators.required]),
+        'lastName': new FormControl(this.registrationData.lastName, [Validators.required])});
   }
 
+  submitForm(value: any): void {
+    console.log('Reactive Form Data: ');
+    console.log(value);
+  }
   ngOnInit() {
     this.getCountries();
     this.getBloodGroups();
@@ -54,7 +63,7 @@ export class BecomeAdonorComponent implements OnInit {
 
   countryRes = (res) => {
     if (res.code === this.constants.API_SUCCESS) {
-      let tempCountry = [];
+      const tempCountry = [];
       tempCountry.push(res.data);
       this.countries = tempCountry;
       console.log(this.countries);
@@ -79,4 +88,7 @@ export class BecomeAdonorComponent implements OnInit {
       this.bloodGroups = res.data;
     }
   }
+
+  get firstName() { return this.registrationForm.get('firstName'); }
+  get lastName() { return this.registrationForm.get('lastName'); }
 }
