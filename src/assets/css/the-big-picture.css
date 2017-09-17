@@ -4,13 +4,34 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-the-big-picture/blob/master/LICENSE)
  */
 
-body {
+ body {
 	font-family: 'Open Sans', sans-serif;
+}
+body:before {
     background: url('../images/body_bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+	content: "";
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    right: 0;
+    bottom: 0;
+	    z-index: -1;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #fff !important; 
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #fff !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #fff !important;
 }
 :focus {
     outline: -webkit-focus-ring-color auto 0px !important;
@@ -20,12 +41,13 @@ h1.reg_head {
     font-weight: 200;
 }
 .reg-form input, .reg-form input:focus,.reg-form select, .reg-form select:focus {
-    background: #181818;
+    background: #4f4f4f;
     padding: 8px 10px;
     font-size: 13px;
     width: 100% !important;
-	margin-bottom:30px !important;
+	margin-bottom:20px !important;
 	height: 34px !important;
+	    color: #fff;
 }
 input:focus, textarea:focus, select:focus {
     outline-offset: 0px;
@@ -35,18 +57,20 @@ input:focus, textarea:focus, select:focus {
     text-align: left;
 	margin-bottom:0px !important;
 	height:auto !important;
+	    margin-right: 7px;
+    margin-top: 3px;
 }
 .checkbox label {
-    color: #495057;
+    color: #fff;
     text-align: left !important;
     display: block;
     font-size: 13px;
 }
 .form-control:focus {
-    border-color: #FFFFFF;
+    border-color: #181818;
 }
 .check_align{
-	margin-top: -20px;
+	margin-top: -10px;
     margin-bottom: 15px;
 }
 .reg_btn {
@@ -55,6 +79,45 @@ input:focus, textarea:focus, select:focus {
     border: 0;
     padding: 5px 40px;
 }
+h1.reg_head {
+    margin: 35px 15px;
+    font-size: 30px;
+}
+.container.logo {
+    padding: 15px;
+    padding-left: 30px;
+}
+@media(max-width:768px){
+.reg_btn {
+    margin-bottom: 20px;
+}
+h1.reg_head{
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+form_bg{
+	background: rgba(0, 0, 0, 0.6);
+}
+}
+@media(max-width:767px){
+.form_bg{
+	background: rgba(0, 0, 0, 0.6);
+}
+}
+
 .error{
     border: 1px solid red;
+}
+
+.form-control:focus {
+    border-color: #ffffff !important;
+}
+.errorText{
+    color: red;
+    font-weight: bold;
+    background: white;
+}
+.social-icons{
+    color: #ffffff !important;
 }

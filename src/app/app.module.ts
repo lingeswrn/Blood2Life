@@ -9,13 +9,15 @@ import { BecomeAdonorComponent } from './pages/become-adonor/become-adonor.compo
 
 import { routing } from './app.routes';
 import { HeaderComponent } from './includes/header/header.component';
+import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComingSoonComponent,
     BecomeAdonorComponent,
-    HeaderComponent
+    HeaderComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

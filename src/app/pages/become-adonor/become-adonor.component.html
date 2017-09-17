@@ -2,111 +2,123 @@
     <!-- Page Content -->
     <section>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1 class="reg_head">Register</h1>
-				<form class="form-inline reg-form" [formGroup]="registrationForm" #regDir="ngForm">
+        <div class="row">		
+          <div class="col-lg-6 form_bg">
+						<h1 class="reg_head">Register</h1>
+				<form class="form-inline reg-form" [formGroup]="registrationForm" #regDir="ngForm" (ngSubmit)="onSubmit(registrationForm.value)">
 					
 					<div class="col-sm-6" >
-						<input class="form-group form-control" [ngClass]="{'error': firstName.invalid && (firstName.dirty || firstName.touched)}" id="firstName" placeholder="First Name" formControlName="firstName" required>
-						<!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"	class="alert alert-danger">
-
-							<div *ngIf="firstName.errors.required">
-								Name is required.
-							</div>
-						</div> -->
+						<input class="form-group form-control" [ngClass]="{'error': firstname.invalid && (firstname.dirty || firstname.touched)}" placeholder="First Name" formControlName="firstname" required>
 					</div>
 					<div class="col-sm-6">
-						<input class="form-group form-control" [ngClass]="{'error': lastName.invalid && (lastName.dirty || lastName.touched)}" placeholder="Last Name" formControlName="lastName" required>
-						<!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"	class="alert alert-danger">
-
-							<div *ngIf="firstName.errors.required">
-								Name is required.
-							</div>
-						</div> -->
+						<input class="form-group form-control" [ngClass]="{'error': lastname.invalid && (lastname.dirty || lastname.touched)}" placeholder="Last Name" formControlName="lastname" required>
 					</div>	
 					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="Phone Number">
-					</div>
+						<input class="form-group form-control" type="number" maxlength="10"
+						minlength="10" placeholder="Phone Number" [ngClass]="{'error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}" formControlName="phoneNumber" required>
+					</div>	
 					<div class="col-sm-6">
+						<input class="form-group form-control" type="email" placeholder="Email Id" [ngClass]="{'error': email.invalid && (email.dirty || email.touched)}" formControlName="email" required>
+					</div>
+					<!-- <div class="col-sm-6">
 						<input class="form-group form-control" type="text" placeholder="Subject">
 					</div>	
 					<div class="col-sm-12 check_align">
 					<div class="checkbox">
 					  <label><input type="checkbox" value="">Your number will be visible to everyone</label>
 					</div>
-					</div>
+					</div> -->
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control" id="gender" placeholder="Gender">
-							<option>Male</option>
-							<option>Female</option>
+						  <select class="form-control" [ngClass]="{'error': gender.invalid && (gender.dirty || gender.touched)}" formControlName="gender" required>
+								<option value="0">Select Gender</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
 						  </select>
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="DOB">
+						<input class="form-group form-control" type="date" placeholder="DOB" id="dob"
+							[ngClass]="{'error': dob.invalid && (dob.dirty || dob.touched)}" formControlName="dob" required>
 					</div>
-					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="Age">
-					</div>
+					<!-- <div class="col-sm-6">
+						<input class="form-group form-control" type="number" placeholder="Age" formControlName="age"  [ngClass]="{'error': age.invalid && (age.dirty || age.touched)}" required>
+					</div> -->
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control">
-							<option *ngFor="let b of bloodGroups" [value]="b.BloodGroupID">{{b.BloodGroup}}</option>
+							<select class="form-control" 
+								[ngClass]="{'error': blood_group.invalid && (blood_group.dirty || blood_group.touched)}" formControlName="blood_group" required>
+								<option value="0">Select Blood group</option>
+								<option *ngFor="let b of bloodGroups" [value]="b.BloodGroupID">{{b.BloodGroup}}</option>
 						  </select>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control">
-								<option>Donation Frequency</option>
+							<select class="form-control"
+								[ngClass]="{'error': donation_frequency.invalid && (donation_frequency.dirty || donation_frequency.touched)}" formControlName="donation_frequency" required>
+								<option value="0">Donation frequency</option>
 								<option value="lessthan3m">Less than 3 Months</option>
 								<option value="morethan3m">More than 3 Months</option>
 								<option value="never">Never</option>
 						  </select>
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="Address">
+					<div class="col-sm-12">
+						<input class="form-group form-control" 
+							[ngClass]="{'error': address.invalid && (address.dirty || address.touched)}" formControlName="address" required
+							type="text" placeholder="Address">
 					</div>
-					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="Hometown">
-					</div>
-					<div class="col-sm-6">
-						<input class="form-group form-control" type="text" placeholder="Pincode">
-					</div>
-					<div class="col-sm-6">
+					<!-- <div class="col-sm-6">
+						<input class="form-group form-control" 
+							[ngClass]="{'error': home_town.invalid && (home_town.dirty || home_town.touched)}" formControlName="home_town"
+							type="text" placeholder="Hometown">
+					</div> -->
+					<!-- <div class="col-sm-6">
 						<div class="form-group">
-						  <input type="text" class="form-control" placeholder="Current City" />
-							
+							<input type="text" class="form-control" 
+							[ngClass]="{'error': current_city.invalid && (current_city.dirty || current_city.touched)}" formControlName="current_city" required
+							placeholder="Current City" />
 						</div>
-					</div>
+					</div> -->
+					<div class="col-sm-6">
+							<div class="form-group">
+								<select class="form-control"
+									[ngClass]="{'error': country.invalid && (country.dirty || country.touched)}" formControlName="country" required	>
+									<option value="0">Select Country</option>
+									<option *ngFor="let a of countries" [value]="a.CountryID" >{{a.Name}}</option>
+								</select>
+							</div>
+						</div>
+					<div class="col-sm-6">
+							<div class="form-group">
+								<select class="form-control" (change) = "getCitiesByStateId($event.target.value)"
+								[ngClass]="{'error': state.invalid && (state.dirty || state.touched)}" formControlName="state" required>
+									<option value="0">Select State</option>
+									<option *ngFor="let s of states" [value]="s.StateID">{{s.Name}}</option>
+								</select>
+							</div>
+						</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-						  <select class="form-control">
-								<!-- <option value="0">Select city or district</option> -->
+							<select class="form-control"
+								[ngClass]="{'error': district.invalid && (district.dirty || district.touched)}" formControlName="district" required>
+								<option value="0">Select city or district</option>
 								<option *ngFor="let c of cities" [value]="c.CityID">{{c.Name}}</option>
 						  </select>
 						</div>
 					</div>
+					
 					<div class="col-sm-6">
-						<div class="form-group">
-						  <select class="form-control" (change) = "getCitiesByStateId($event.target.value)">
-								<option value="0">Select State</option>
-								<option *ngFor="let s of states" [value]="s.StateID">{{s.Name}}</option>
-						  </select>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-						  <select class="form-control">
-								<option *ngFor="let a of countries" [value]="a.CountryID" [selected]="a.CountryID == '101'">{{a.Name}}</option>
-						  </select>
-						</div>
+							<input class="form-group form-control" 
+								[ngClass]="{'error': pincode.invalid && (pincode.dirty || pincode.touched)}" formControlName="pincode" required
+								type="text" placeholder="Pincode">
 					</div>
 					<div class="col-sm-12 text-center">
-						<button type="submit" class="reg_btn">Register</button>
+							<p *ngIf="isError" class="errorText">{{errorText}}</p>
+					</div>
+					<div class="col-sm-12 text-center">
+						<button type="submit" class="reg_btn" [disabled]="registrationForm.invalid">Register</button>
 					</div>
 				</form>
           </div>

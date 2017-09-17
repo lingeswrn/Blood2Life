@@ -20,12 +20,14 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-		"assets/css/bootstrap.min.css",
-		"assets/css/the-big-picture.css"		
+		    "assets/css/bootstrap.min.css",
+		    "assets/css/the-big-picture.css",	
+		    "assets/css/bootstrap-datepicker3.min.css"		
       ],
       "scripts": [
-		"assets/js/jquery.min.js",
-		"assets/js/bootstrap.min.js"
+        "assets/js/jquery.min.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/bootstrap-datepicker.min.js"
 	  ],
       "environmentSource": "environments/environment.ts",
       "environments": {
